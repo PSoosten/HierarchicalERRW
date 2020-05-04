@@ -1,17 +1,5 @@
 clear all; close all; clc;
 
-% Samples a reinforced hierarchical random walk. The initial transition
-% matrix can be written as
-% P = sum_r p_r L_r
-% where L_r is block diagonal with 2^r * 2^r blocks of 1s on the
-% diagonal. As the walk transitions from x to y, we find the smallest r
-% such that L_r has block containing x and y. We then set the entries of
-% this block to 1+A instead of 1. The model might have a
-% recurrence-transience transition in A when C < 1, which corresponds to
-% effective dimension > 2.
-
-% might be better to adjust layers for an effective new C parameter...
-
 % Settings
 C = 0.8;              % Dimension parameter D = 2/C
 A = 20;               % Reinforcment parameter. Layers are weighted with 1 
