@@ -18,7 +18,7 @@ A = 20;               % Reinforcment parameter. Layers are weighted with 1
                       % originally and updated to 1+A when they are traversed
 C_2 = 0.8;            % Give a new C after transversal...
 N = 12;               % Run on 2^N Sites
-TotalSteps = 100000;  % Number of steps to take
+TotalSteps = 10000;  % Number of steps to take
 
 
 % Computes the layer coefficients according to dimension
@@ -71,5 +71,8 @@ end
 
 % Plot the trajectory and the local times and the running maximum
 figure; plot(Walk);
-figure; histogram(Walk, 100)
+xlabel('Step'); ylabel('Position'); title('Trajectory');
+figure; histogram(Walk, 100);
+xlabel('Position'); ylabel('Local Time'); title('Local Times');
 figure; plot(cummax(Walk));
+xlabel('Step'); ylabel('Running Maximum'); title('Running Maximum');
