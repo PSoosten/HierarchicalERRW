@@ -14,6 +14,8 @@ As output, the script shows the random walk's trajectory, the local time spent a
 
 Here are the figures produced by the default settings (in the recurrent regime):
 
-![Trajectory](Trajectory.png)
-![Local Times](LocalTimes.png)
-![Running Maximum](RunningMax.png)
+<img src="Trajectory.png" alt="Trajectory" width="500">
+
+<img src="LocalTimes.png" alt="Local Times" width="500">
+
+<img src="RunningMax.png" alt="Running Maximum" width="500">
