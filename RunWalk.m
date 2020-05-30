@@ -2,18 +2,16 @@ clear all; close all; clc;
 
 % Settings
 C = 0.8;              % Dimension parameter D = 2/C
-A = 20;               % Reinforcment parameter. Layers are weighted with 1 
-                      % originally and updated to 1+A when they are traversed
-C_2 = 0.8;            % Give a new C after transversal...
+C_2 = 1.2;            % Give a new C after transversal (reinforcement parameter)
 N = 12;               % Run on 2^N Sites
-TotalSteps = 10000;  % Number of steps to take
+TotalSteps = 10000;   % Number of steps to take
 
 
-% Computes the layer coefficients according to dimension
+% Compute the layer coefficients according to dimension
 P = 2.^(-(1+C) .* (1:(N+1)) );
 
 
-%Initialize layers of hierarchical transition matrix to all have weight 1
+% Initialize layers of hierarchical transition matrix to all have weight 1
 Layers = zeros(N+1, 2^N, 2^N);
 for R = 1:N+1
     for Lower = 1:2^(R-1):2^N
