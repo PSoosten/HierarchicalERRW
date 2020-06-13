@@ -1,10 +1,11 @@
-clear all; close all; clc;
+clear all; close all; clc; rng(42);
+
 
 % Settings
-C = 0.8;              % Dimension parameter D = 2/C
-C_2 = 1.2;            % Give a new C after transversal (reinforcement parameter)
-N = 12;               % Run on 2^N Sites
-TotalSteps = 10000;   % Number of steps to take
+C = 0.8;               % Dimension parameter D = 2/C
+C_2 = 1.4;             % Give a new C after transversal (reinforcement parameter)
+N = 13;                % Run on 2^N Sites
+TotalSteps = 100000;   % Number of steps to take
 
 
 % Compute the layer coefficients according to dimension
@@ -32,22 +33,22 @@ for Step = 2:TotalSteps
     CDF = cumsum(Dist);
     U = rand();
     Walk(Step) = find(CDF >= U, 1, 'first');
-    
+
     % Find the smallest layer coupling Walk(Step-1) and Walk(Step)
     R = find(Layers(:, Walk(Step-1), Walk(Step)), 1, 'first');
-    
+
     % And update it if we have not traversed the layer
     if Layers(R, Walk(Step-1), Walk(Step)) == 1
-        % Find the indices of the block in layer R that contains 
+        % Find the indices of the block in layer R that contains
         % Walk(Step) and Walk(Step-1)
         Lower = Walk(Step) - mod(Walk(Step) - 1, 2^(R-1));
         Upper = Lower + 2^(R-1) - 1;
         % Increase the prefactor linearly
         % Layers(R, Lower:Upper, Lower:Upper) = (1 + A)*ones(2^(R-1), 2^(R-1));
         % Decrease the C parameter
-        Layers(R, Lower:Upper, Lower:Upper) = (2^((C_2 - C)*R))*ones(2^(R-1), 2^(R-1));
+        Layers(R, Lower:Upper, Lower:Upper) = (2^((C - C_2)*R))*ones(2^(R-1), 2^(R-1));
     end
-    
+
     % Display the time here and there
     if mod(Step, 1000) == 0
         fprintf('Step = %d\n', Step);

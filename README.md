@@ -2,7 +2,7 @@
 This script samples trajectories of a reinforced hierarchical random walk. The (unnormalized) initial transition matrix can be written as
 
 P = sum_r p_r L_r
- 
+
 where L_r is block diagonal with 2^r * 2^r blocks of 1s on the diagonal. To set an effective (spectral) dimension of D, one sets
 p_r = 2^(-(1+C)),  C = 2/D.
 
