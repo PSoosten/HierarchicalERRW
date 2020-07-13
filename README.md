@@ -1,4 +1,4 @@
-# HierarchicalERRW
+# Hierarchical ERRW
 This script samples trajectories of a reinforced hierarchical random walk. The (unnormalized) initial transition matrix can be written as
 
 P = sum_r p_r L_r
